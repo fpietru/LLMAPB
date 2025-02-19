@@ -2,6 +2,8 @@
 
 A web application that allows users to manage their contacts through natural language commands. Users can add, edit, delete, and retrieve contact records, all while interacting with a simple, intuitive interface. This application leverages a Large Language Model (LLM) to convert natural language into SQL queries, making it easy for users to interact with the phone book without writing SQL themselves.
 
+![Screenshot](media/screenshot.png)
+
 ## Features
 
 - **Add Contact**: Users can add new contact records with names and phone numbers.
