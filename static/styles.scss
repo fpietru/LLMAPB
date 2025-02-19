@@ -1,0 +1,134 @@
+$primary-color: #e67e22; 
+$secondary-color: #fdf6e3;
+$text-color: #5a3e36;
+$button-hover: darken($primary-color, 10%);
+$table-border: #ffddad;
+$disabled-color: #e0c6a1;
+$focus-color: #ffae42;
+$selection-bg: #ffcc80;
+$selection-text: #5a3e36;
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: $secondary-color;
+    color: $text-color;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+::selection {
+    background: $selection-bg;
+    color: $selection-text;
+}
+
+.content {
+    width: 60%;
+    background: white;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: $primary-color;
+}
+
+form {
+    margin: 20px 0;
+
+    input {
+        padding: 10px;
+        width: 60%;
+        border: 1px solid $table-border;
+        border-radius: 5px;
+        font-size: 16px;
+    
+        &:focus {
+            border-color: $focus-color;
+            outline: none;
+            box-shadow: 0 0 5px rgba($focus-color, 0.7);      
+        }
+    }
+
+    button {
+        background: $primary-color;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+
+        &:hover {
+            background: $button-hover;
+        }
+
+        &:disabled {
+            background: $disabled-color;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba($focus-color, 0.8);
+        }
+    }
+}
+
+.pending {
+    background: lighten($primary-color, 40%);
+    padding: 15px;
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    margin: 20px 0;
+
+    strong {
+        font-family: 'Courier New', Courier, monospace;
+        display: block;
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    button {
+        margin: 5px;
+        padding: 8px 12px;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    th, td {
+        padding: 10px;
+        border: 1px solid $table-border;
+    }
+
+    .sql_column {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    th {
+        background: $primary-color;
+        color: white;
+    }
+
+    td {
+        background: lighten($secondary-color, 5%);
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        width: 90%;
+    }
+
+    form input {
+        width: 100%;
+    }
+}

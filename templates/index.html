@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Phone Book</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>LLM Augmented Phone Book</h1>
+    {% if pending %}
+        <div class="pending">
+            <p>Execute this SQL query?</p>
+            <strong>{{ pending[1] }}</strong>
+            <form method="post">
+                <button {% if pending[1] == "COULDNT CONVERT TO SQL" %} disabled {% endif %} type="submit" name="accept">Accept</button>
+                <button type="submit" name="decline">Try Again</button>
+            </form>
+        </div>
+    {% else %}
+        <form action="/" method="POST">
+            <input type="text" name="command" required>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+
+    {% if responses | length < 1 %}
+        <h3>No responses yet</h3>
+    {% else %}
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>SQL Query</th>
+            <th>Response</th>
+        </tr>
+        
+        {% for response in responses %}
+        <tr>
+            <td>{{response[0].strftime("%H:%M:%S")}}</td>
+            <td class="sql_column">{{response[1]}}</td>
+            <td>
+                {% if response[2] is iterable and response[2] is not string %}
+                <table class="inner-table">
+                    {% for row in response[2] %}
+                    <tr>
+                        {% for cell in row %}
+                        <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                {{ response[2] }}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
