@@ -25,7 +25,7 @@ A web application that allows users to manage their contacts through natural lan
 1. Clone the repository:
     ```bash
     git clone git@github.com:fpietru/LLMAPB.git
-    cd LLAMPB
+    cd LLMAPB
     ```
 
 2. Install [Ollama](https://ollama.com/)
